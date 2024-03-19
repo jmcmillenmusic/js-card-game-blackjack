@@ -1,0 +1,21 @@
+/* Sets background color */
+body {
+    background-color: #568f56;
+}
+
+/* Sets attributes for font, width, and margins */
+main {
+    font-family: monospace;
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Sets all text attributes */
+h1, h2 {
+    text-align: center;
+    background-color: #90EE90;
+    border-style: solid;
+    border-color: black;
+    border-radius: 10px;
+    border-width: 3px;
+}
