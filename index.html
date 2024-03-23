@@ -9,11 +9,20 @@
     <main>
         <h1>JavaScript Card Games: Blackjack</h1>
         <div class="playarea">
-            <h2 id="playerMoney"></h2>
-            <h2 id="playerBet"></h2>
-            <button id="increaseBet">+ $1</button>
-            <button id="decreaseBet">- $1</button>
-            <button id="maximumBet">Max Bet</button>
+            <div id="betting">
+                <h2 id="playerMoney"></h2>
+                <h2 id="playerBet"></h2>
+                <button id="increaseBet">+ $1</button>
+                <button id="decreaseBet">- $1</button>
+                <button id="maximumBet">Max Bet</button>
+                <button id="deal">Deal</button>
+            </div>
+            <div id="computerCards">
+                <!-- CPU cards go here -->
+            </div>
+            <div id="playerCards">
+                <!-- Player cards go here -->
+            </div>
         </div>
     </main>
     <script type="module" src="index.js"></script>
