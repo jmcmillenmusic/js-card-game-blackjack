@@ -1,7 +1,7 @@
 // Imports variables from their respective scripts
 import { deck, shuffle } from "./scripts/shuffle.js";
 import { playerMoney, playerBet, increaseBet, decreaseBet, maximumBet, refresh } from "./scripts/playerMoney.js";
-import deal from "./scripts/deal.js";
+import { deal, createCards } from "./scripts/deal.js";
 
 // Shuffles the deck automatically when the window loads 
 window.onload = shuffle();
@@ -19,3 +19,4 @@ document.getElementById('decreaseBet').addEventListener('click', refresh);
 document.getElementById('maximumBet').addEventListener('click', maximumBet);
 document.getElementById('maximumBet').addEventListener('click', refresh);
 document.getElementById('deal').addEventListener('click', deal);
+document.getElementById('deal').addEventListener('click', createCards);
