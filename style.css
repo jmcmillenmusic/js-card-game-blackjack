@@ -23,35 +23,48 @@ h1, h2 {
 /* Sets width of playerMoney and playerBet */
 h2 {
     width: 100%;
+    font-size: 24px;
 }
 
 /* Flexibly displays the playarea as a row */
 .playarea {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
 /* Flexibly displays all items within the playarea as columns */
-#menu {
+.menu {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
 }
 
+#money {
+    width: 30%;
+}
+
+#betting, #actions {
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 /* Resizes the cards areas to take up the most amount of room possible */
 #computerCards, #playerCards {
-    flex-grow: 10;
+    flex-basis: 90%;
 }
 
 /* Sets attributes for buttons */
 button {
-    width: 100%;
+    width: 50%;
     font-size: 24px;
     background-color: #90EE90;
     border-radius: 16px;
+    margin: 5px;
 }
 
 button:disabled {
@@ -68,17 +81,16 @@ button:hover {
 #computerCards, #playerCards {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
-    position: relative; 
+    position: relative;
 }
 
 /* Sets attributes of all face-up cards */
 .fullcard {
     display: flex;
     position: relative;
-    width: 200px;
-    height: 280px;
+    width: 150px;
+    height: 210px;
     align-items: center;
 }
 
@@ -88,6 +100,6 @@ button:hover {
 }
 
 .cardText {
-    font-size: 96px;
+    font-size: 72px;
     text-align: center;
 }
