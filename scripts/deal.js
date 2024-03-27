@@ -3,7 +3,7 @@ import { deck, discardPile, playerPlay, computerPlay } from "./base.js";
 function deal() {
     // Shuffle the discard pile back into the deck if there are 10 or fewer cards first
     if (deck.length <= 10) {
-        // Shuffles the discard pile
+        // Shuffles the discard pile using the Fisher-Yates Algorithm
         for (let i = discardPile.length - 1; i > 0; i--) {
             let j = Math.floor(Math.random() * (i + 1));
             [discardPile[i], discardPile[j]] = [discardPile[j], discardPile[i]];
@@ -99,20 +99,20 @@ function createCards() {
         // Sets the card value, suit, and text color
         const card = computerPlay[i];
         cardContainer.id = `${card.Value} of ${card.Suit}`;
-        switch (true) {
-            case (card.Suit === "clubs"):
+        switch (card.Suit) {
+            case ("clubs"):
                 cardText.textContent = `${card.Value}\u2663`;
                 cardText.style.color = "black";
                 break;
-            case (card.Suit === "diamonds"):
+            case ("diamonds"):
                 cardText.textContent = `${card.Value}\u2666`;
                 cardText.style.color = "red";
                 break;
-            case (card.Suit === "hearts"):
+            case ("hearts"):
                 cardText.textContent = `${card.Value}\u2665`;
                 cardText.style.color = "red";
                 break;
-            case (card.Suit === "spades"):
+            case ("spades"):
                 cardText.textContent = `${card.Value}\u2660`;
                 cardText.style.color = "black";
                 break;
@@ -120,4 +120,9 @@ function createCards() {
     }
 }
 
-export { deal, createCards };
+function start() {
+    // const betButtons = document.querySelectorAll('.betButton').disabled = true;
+    // const actionButtons = document.querySelectorAll('.actionButton').disabled = false;
+}
+
+export { deal, createCards, start };
