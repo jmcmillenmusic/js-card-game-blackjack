@@ -1,5 +1,7 @@
 import { deck, discardPile, playerPlay, computerPlay } from "./base.js";
 
+
+
 function deal() {
     // Shuffle the discard pile back into the deck if there are 10 or fewer cards first
     if (deck.length <= 10) {
@@ -121,8 +123,14 @@ function createCards() {
 }
 
 function start() {
-    // const betButtons = document.querySelectorAll('.betButton').disabled = true;
-    // const actionButtons = document.querySelectorAll('.actionButton').disabled = false;
+    const bettingButtons = document.getElementById('betting').getElementsByClassName('betButton');
+    const actionButtons = document.getElementById('actions').getElementsByClassName('actionButton');
+    for (let i = 0; i < bettingButtons.length; i++) {
+        bettingButtons[i].disabled = true;
+    }
+    for (let i = 0; i < actionButtons.length; i++) {
+        actionButtons[i].disabled = false;
+    }
 }
 
 export { deal, createCards, start };
