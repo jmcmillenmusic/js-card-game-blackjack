@@ -1,7 +1,5 @@
 import { deck, discardPile, playerPlay, computerPlay } from "./base.js";
 
-
-
 function deal() {
     // Shuffle the discard pile back into the deck if there are 10 or fewer cards first
     if (deck.length <= 10) {
@@ -34,7 +32,7 @@ function deal() {
     console.log(playerPlay);
 }
 
-// Creates card images based on the last card you and the computer played
+// Creates card images based on each card dealt to you and the computer
 function createCards() {
     // TODO: Make these 2 for loops into a singular for loop if possible
     for (let i = 0; i < playerPlay.length; i++) {
@@ -120,9 +118,16 @@ function createCards() {
                 break;
         }
     }
+
+    // Ensures that the computer's first card is face-down instead of face-up
+    const dealerFirstCardImg = document.getElementById('computerCards').getElementsByClassName('cardImg');
+    dealerFirstCardImg[0].src = 'images/card_back.png';
+    const dealerFirstCardText = document.getElementById('computerCards').getElementsByClassName('cardText');
+    dealerFirstCardText[0].style.visibility = 'hidden';
 }
 
 function start() {
+    // Disables buttons that change the player's bet and enables buttons that allow the player to play Blackjack
     const bettingButtons = document.getElementById('betting').getElementsByClassName('betButton');
     const actionButtons = document.getElementById('actions').getElementsByClassName('actionButton');
     for (let i = 0; i < bettingButtons.length; i++) {
@@ -133,4 +138,51 @@ function start() {
     }
 }
 
-export { deal, createCards, start };
+// Compares your card and the computer's card to see which card has a higher value
+function compare() {
+    let playerTotal = 0;
+    let computerTotal = 0;
+
+    // Sets the value of all face cards and aces to a number; otherwise, converts the cards' value from a string to a number
+    // TODO: Change value of aces to 1 if playerTotal or computerTotal > 21.
+    for (let i = 0; i < computerPlay.length; i++) {
+        switch (computerPlay[i].Value) {
+            case ('J'):
+            case ('Q'):
+            case ('K'):
+                computerTotal = computerTotal + 10;
+                break;
+            case ('A'):
+                computerTotal = computerTotal + 11;
+                break;
+            default:
+                computerTotal = computerTotal + Number(computerPlay[i].Value);
+                break;
+        }
+        console.log(computerPlay[i].Value);
+    }
+    console.log(computerTotal);
+    
+    for (let i = 0; i < playerPlay.length; i++) {
+        switch (playerPlay[i].Value) {
+            case ('J'):
+            case ('Q'):
+            case ('K'):
+                playerTotal = playerTotal + 10;
+                break;
+            case ('A'):
+                playerTotal = playerTotal + 11;
+                break;
+            default:
+                playerTotal = playerTotal + Number(playerPlay[i].Value);
+                break;
+        }
+        console.log(playerPlay[i].Value);
+    }
+    console.log(playerTotal);
+
+    // Shows the player the value of the cards in their hand
+    document.getElementById('playerTotal').textContent = `Player Total: ${playerTotal}`;
+}
+
+export { deal, createCards, start, compare };

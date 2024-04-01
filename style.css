@@ -103,3 +103,8 @@ button:hover {
     font-size: 72px;
     text-align: center;
 }
+
+#dealerTotal, #playerTotal {
+    width: 20%;
+    margin-right: 8%;
+}
