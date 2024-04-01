@@ -1,7 +1,5 @@
 import { deck, discardPile, playerPlay, computerPlay } from "./base.js";
 
-
-
 function deal() {
     // Shuffle the discard pile back into the deck if there are 10 or fewer cards first
     if (deck.length <= 10) {
@@ -34,7 +32,7 @@ function deal() {
     console.log(playerPlay);
 }
 
-// Creates card images based on the last card you and the computer played
+// Creates card images based on each card dealt to you and the computer
 function createCards() {
     // TODO: Make these 2 for loops into a singular for loop if possible
     for (let i = 0; i < playerPlay.length; i++) {
@@ -92,6 +90,12 @@ function createCards() {
         cardImg.setAttribute('class', 'cardImg');
         cardImg.src = 'images/blank_card.png';
         cardContainer.appendChild(cardImg);
+
+        // if (i = 0) {
+        //     cardImg.src = 'images/card_back.png';
+        // } else {
+        //     cardImg.src = 'images/blank_card.png';
+        // }
     
         // Creates the card text with the cardText class under cardContainer
         const cardText = document.createElement('h3');
@@ -119,7 +123,17 @@ function createCards() {
                 cardText.style.color = "black";
                 break;
         }
+
+        // if (i = 0) {
+        //     cardText.visibility = hidden;
+        // }
     }
+
+    // Ensures that the computer's first card is face-down instead of face-up
+    const dealerFirstCardImg = document.getElementById('computerCards').getElementsByClassName('cardImg');
+    dealerFirstCardImg[0].src = 'images/card_back.png';
+    const dealerFirstCardText = document.getElementById('computerCards').getElementsByClassName('cardText');
+    dealerFirstCardText[0].style.visibility = 'hidden';
 }
 
 function start() {
