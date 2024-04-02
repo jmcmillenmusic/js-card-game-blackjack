@@ -17,7 +17,9 @@ export { deck, discardPile, playerPlay, computerPlay, suits, values };
 
 File Path:
 
-base.js => shuffle.js, playerMoney.js, deal.js
+base.js => shuffle.js, playerMoney.js, deal.js, hit.js
+
+deal.js => hit.js
 
 ALL SCRIPTS => index.js
 
