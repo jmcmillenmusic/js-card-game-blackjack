@@ -7,10 +7,9 @@ function increaseBet() {
     if (playerMoney > 0 && playerBet <= 9) {
         playerMoney--;
         playerBet++;
-        // console.log(playerMoney);
-        // console.log(playerBet);
     }
     else {
+        // TODO: Show this on the front end as well.
         console.log("Can't bet any more money!");
     }
 }
@@ -20,10 +19,9 @@ function decreaseBet() {
     if (playerBet > 0) {
         playerMoney++;
         playerBet--;
-        // console.log(playerMoney);
-        // console.log(playerBet);
     }
     else {
+        // TODO: Show this on the front end as well.
         console.log("Must bet at least $1!");
     }
 }
@@ -37,8 +35,6 @@ function maximumBet() {
     if (playerMoney >= 10) {
         playerMoney = playerMoney - 10;
         playerBet = 10;
-        // console.log(playerMoney);
-        // console.log(playerBet);
     }
 }
 
