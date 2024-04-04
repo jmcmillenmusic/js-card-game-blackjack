@@ -162,9 +162,7 @@ function compare() {
                 computerTotal = computerTotal + Number(computerPlay[i].Value);
                 break;
         }
-        // console.log(computerPlay[i].Value);
     }
-    // console.log(computerTotal);
     
     for (let i = 0; i < playerPlay.length; i++) {
         switch (playerPlay[i].Value) {
@@ -174,7 +172,13 @@ function compare() {
                 playerTotal = playerTotal + 10;
                 break;
             case ('A'):
-                playerTotal = playerTotal + 11;
+                if (playerTotal <= 10) {
+                    playerTotal = playerTotal + 11;
+                    // console.log("Ace is 11");
+                } else {
+                    playerTotal = playerTotal + 1;
+                    // console.log("Ace is 1");
+                }
                 break;
             default:
                 playerTotal = playerTotal + Number(playerPlay[i].Value);
