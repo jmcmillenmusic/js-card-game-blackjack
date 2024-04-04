@@ -145,6 +145,8 @@ function start() {
 function compare() {
     let playerTotal = 0;
     let computerTotal = 0;
+    let playerPoints = [];
+    let computerPoints = [];
 
     // Sets the value of all face cards and aces to a number; otherwise, converts the cards' value from a string to a number
     // TODO: Change value of aces to 1 if playerTotal or computerTotal > 21.
@@ -153,36 +155,71 @@ function compare() {
             case ('J'):
             case ('Q'):
             case ('K'):
-                computerTotal = computerTotal + 10;
+                computerPlay[i].Points = 10;
+                // computerTotal = computerTotal + 10;
                 break;
             case ('A'):
-                computerTotal = computerTotal + 11;
+                if (computerTotal <= 10) {
+                    computerPlay[i].Points = 11;
+                    // computerTotal = computerTotal + 11;
+                    // console.log("Ace is 11");
+                } else {
+                    computerPlay[i].Points = 1;
+                    // computerTotal = computerTotal + 1;
+                    // console.log("Ace is 1");
+                }
                 break;
             default:
-                computerTotal = computerTotal + Number(computerPlay[i].Value);
+                computerPlay[i].Points = Number(computerPlay[i].Value);
+                // computerTotal = computerTotal + Number(computerPlay[i].Value);
                 break;
         }
-        // console.log(computerPlay[i].Value);
     }
-    // console.log(computerTotal);
     
     for (let i = 0; i < playerPlay.length; i++) {
         switch (playerPlay[i].Value) {
             case ('J'):
             case ('Q'):
             case ('K'):
-                playerTotal = playerTotal + 10;
+                playerPlay[i].Points = 10;
+                playerPoints.push(playerPlay[i].Points);
+                console.log(playerPoints);
+                // playerTotal = playerTotal + 10;
                 break;
             case ('A'):
-                playerTotal = playerTotal + 11;
+                if (playerTotal <= 10) {
+                    playerPlay[i].Points = 11;
+                    playerPoints.push(playerPlay[i].Points);
+                    console.log(playerPoints);
+                    // playerTotal = playerTotal + 11;
+                    // console.log("Ace is 11");
+                } else {
+                    playerPlay[i].Points = 1;
+                    playerPoints.push(playerPlay[i].Points);
+                    console.log(playerPoints);
+                    // playerTotal = playerTotal + 1;
+                    // console.log("Ace is 1");
+                }
                 break;
             default:
-                playerTotal = playerTotal + Number(playerPlay[i].Value);
+                playerPlay[i].Points = Number(playerPlay[i].Value);
+                playerPoints.push(playerPlay[i].Points);
+                console.log(playerPoints);
+                // playerTotal = playerTotal + Number(playerPlay[i].Value);
                 break;
         }
+        playerTotal = playerPoints.reduce((a, b) => a + b, 0);
+        console.log(playerTotal);
         // console.log(playerPlay[i].Value);
     }
     // console.log(playerTotal);
+
+    // Reduces an ace's value from 11 to 1 if it would cause the player to go over 21
+    // if (playerTotal > 21) {
+    //     if (playerPlay.findIndex(x => x.Value === 'A') > -1) {
+    //         playerTotal = playerTotal - 10;
+    //     }
+    // }
 
     // Shows the player the value of the cards in their hand
     document.getElementById('playerTotal').textContent = `Player Total: ${playerTotal}`;
