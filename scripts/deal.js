@@ -141,6 +141,21 @@ function start() {
     }
 }
 
+function bust() {
+    // Disables actions buttons when the player goes over 21
+
+    // const bettingButtons = document.getElementById('betting').getElementsByClassName('betButton');
+    // for (let i = 0; i < bettingButtons.length; i++) {
+        //     bettingButtons[i].disabled = false;
+        // }
+    const actionButtons = document.getElementById('actions').getElementsByClassName('actionButton');
+    for (let i = 0; i < actionButtons.length; i++) {
+        actionButtons[i].disabled = true;
+    }
+    // playerBet = 0;
+    // console.log("Busted!");
+}
+
 // Compares your card and the computer's card to see which card has a higher value
 function compare() {
     // Initialize variables that track card values as points
@@ -216,7 +231,12 @@ function compare() {
                 console.log(playerTotal);
             }
         }
-    }
+        const lookForAce = playerPlay.find(item => item.Value === 'A');
+        console.log(lookForAce);
+        // if (lookForAce = undefined) {
+        //     bust();
+        // }
+    } 
 
     // Reduces an ace's value from 11 to 1 if it would cause the computer to go over 21
     if (computerTotal > 21) {
