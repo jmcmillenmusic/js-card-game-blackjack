@@ -163,6 +163,8 @@ function compare() {
     let computerTotal = 0;
     let playerPoints = [];
     let computerPoints = [];
+    const lookForAce = playerPlay.find(item => item.Value === 'A');
+    let aceAltered = false;
 
     // Sets the value of the computer's face cards and aces to a number; otherwise, converts the cards' value from a string to a number
     for (let i = 0; i < computerPlay.length; i++) {
@@ -221,22 +223,29 @@ function compare() {
     console.log(playerTotal);
 
     // Reduces an ace's value from 11 to 1 if it would cause the player to go over 21
-    if (playerTotal > 21) {
-        for (let i = 0; i < playerPlay.length; i++) {
-            if (playerPlay[i].Value === 'A') {
-                playerPlay[i].Points = 1;
-                playerPoints[i] = 1;
-                playerTotal = playerPoints.reduce((a, b) => a + b, 0);
-                console.log(playerPoints);
-                console.log(playerTotal);
+    if (playerTotal > 21 && lookForAce != undefined) {
+        if (aceAltered = false) {
+            for (let i = 0; i < playerPlay.length; i++) {
+                if (playerPlay[i].Value === 'A') {
+                    playerPlay[i].Points = 1;
+                    playerPoints[i] = 1;
+                    playerTotal = playerPoints.reduce((a, b) => a + b, 0);
+                    aceAltered = true;
+                    console.log(playerPoints);
+                    console.log(playerTotal);
+                }
             }
+            console.log(lookForAce);
+            console.log(aceAltered);
+        } else if (aceAltered = true) {
+            bust();
+            console.log("Busted!");
         }
-        const lookForAce = playerPlay.find(item => item.Value === 'A');
-        console.log(lookForAce);
-        // if (lookForAce = undefined) {
-        //     bust();
-        // }
-    } 
+        
+    } else if (playerTotal > 21 && lookForAce === undefined) {
+        bust();
+        console.log("Busted!");
+    }
 
     // Reduces an ace's value from 11 to 1 if it would cause the computer to go over 21
     if (computerTotal > 21) {
