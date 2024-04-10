@@ -142,10 +142,10 @@ function start() {
     }
 }
 
-// Disables actions buttons when the player goes over 21
+// Disables actions buttons except Clear when the player goes over 21
 function bust() {
     const actionButtons = document.getElementById('actions').getElementsByClassName('actionButton');
-    for (let i = 0; i < actionButtons.length; i++) {
+    for (let i = 0; i < actionButtons.length - 1; i++) {
         actionButtons[i].disabled = true;
     }
     lose(0);

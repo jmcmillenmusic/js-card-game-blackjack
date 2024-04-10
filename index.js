@@ -3,6 +3,7 @@ import { deck, shuffle } from "./scripts/shuffle.js";
 import { playerMoney, playerBet, increaseBet, decreaseBet, maximumBet, refresh } from "./scripts/playerMoney.js";
 import { deal, start, compare } from "./scripts/deal.js";
 import { hit } from "./scripts/hit.js";
+import { clear } from "./scripts/clear.js";
 
 // Shuffles the deck automatically when the window loads 
 window.onload = shuffle();
@@ -36,3 +37,6 @@ document.getElementById('deal').addEventListener('click', compare);
 // Adds event listeners to the #hit button
 document.getElementById('hit').addEventListener('click', hit);
 document.getElementById('hit').addEventListener('click', compare);
+
+// Adds event listeners to the #clear button
+document.getElementById('clear').addEventListener('click', clear);
