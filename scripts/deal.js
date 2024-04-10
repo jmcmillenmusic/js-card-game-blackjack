@@ -1,5 +1,6 @@
 // Imports the variables below from base.js
 import { deck, discardPile, playerPlay, computerPlay } from "./base.js";
+import { lose, refresh } from "./playerMoney.js";
 
 // Creates card images for cards dealt to the player
 function createPlayerCard() {
@@ -141,19 +142,14 @@ function start() {
     }
 }
 
+// Disables actions buttons except Clear when the player goes over 21
 function bust() {
-    // Disables actions buttons when the player goes over 21
-
-    // const bettingButtons = document.getElementById('betting').getElementsByClassName('betButton');
-    // for (let i = 0; i < bettingButtons.length; i++) {
-        //     bettingButtons[i].disabled = false;
-        // }
     const actionButtons = document.getElementById('actions').getElementsByClassName('actionButton');
-    for (let i = 0; i < actionButtons.length; i++) {
+    for (let i = 0; i < actionButtons.length - 1; i++) {
         actionButtons[i].disabled = true;
     }
-    // playerBet = 0;
-    // console.log("Busted!");
+    lose(0);
+    refresh();
 }
 
 // Compares your card and the computer's card to see which card has a higher value
@@ -163,6 +159,10 @@ function compare() {
     let computerTotal = 0;
     let playerPoints = [];
     let computerPoints = [];
+
+    // Initialize variables that track whether the player has an ace and if an ace has had its value reduced to 1
+    const lookForAce = playerPlay.find(item => item.Value === 'A');
+    let aceAltered = false;
 
     // Sets the value of the computer's face cards and aces to a number; otherwise, converts the cards' value from a string to a number
     for (let i = 0; i < computerPlay.length; i++) {
@@ -221,22 +221,29 @@ function compare() {
     console.log(playerTotal);
 
     // Reduces an ace's value from 11 to 1 if it would cause the player to go over 21
-    if (playerTotal > 21) {
-        for (let i = 0; i < playerPlay.length; i++) {
-            if (playerPlay[i].Value === 'A') {
-                playerPlay[i].Points = 1;
-                playerPoints[i] = 1;
-                playerTotal = playerPoints.reduce((a, b) => a + b, 0);
-                console.log(playerPoints);
-                console.log(playerTotal);
+    if (playerTotal > 21 && lookForAce != undefined) {
+        if (aceAltered = false) {
+            for (let i = 0; i < playerPlay.length; i++) {
+                if (playerPlay[i].Value === 'A') {
+                    playerPlay[i].Points = 1;
+                    playerPoints[i] = 1;
+                    playerTotal = playerPoints.reduce((a, b) => a + b, 0);
+                    aceAltered = true;
+                    console.log(playerPoints);
+                    console.log(playerTotal);
+                }
             }
+            console.log(lookForAce);
+            console.log(aceAltered);
+        } else if (aceAltered = true) {
+            bust();
+            console.log("Busted!");
         }
-        const lookForAce = playerPlay.find(item => item.Value === 'A');
-        console.log(lookForAce);
-        // if (lookForAce = undefined) {
-        //     bust();
-        // }
-    } 
+        
+    } else if (playerTotal > 21 && lookForAce === undefined) {
+        bust();
+        console.log("Busted!");
+    }
 
     // Reduces an ace's value from 11 to 1 if it would cause the computer to go over 21
     if (computerTotal > 21) {

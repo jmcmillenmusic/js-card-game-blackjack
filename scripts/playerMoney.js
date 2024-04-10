@@ -52,4 +52,8 @@ function refresh() {
     }
 }
 
-export { playerMoney, playerBet, increaseBet, decreaseBet, maximumBet, refresh };
+function lose(money) {
+    playerBet = money;
+}
+
+export { playerMoney, playerBet, increaseBet, decreaseBet, maximumBet, refresh, lose };
