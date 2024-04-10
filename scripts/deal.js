@@ -1,5 +1,6 @@
 // Imports the variables below from base.js
 import { deck, discardPile, playerPlay, computerPlay } from "./base.js";
+import { lose, refresh } from "./playerMoney.js";
 
 // Creates card images for cards dealt to the player
 function createPlayerCard() {
@@ -141,19 +142,14 @@ function start() {
     }
 }
 
+// Disables actions buttons when the player goes over 21
 function bust() {
-    // Disables actions buttons when the player goes over 21
-
-    // const bettingButtons = document.getElementById('betting').getElementsByClassName('betButton');
-    // for (let i = 0; i < bettingButtons.length; i++) {
-        //     bettingButtons[i].disabled = false;
-        // }
     const actionButtons = document.getElementById('actions').getElementsByClassName('actionButton');
     for (let i = 0; i < actionButtons.length; i++) {
         actionButtons[i].disabled = true;
     }
-    // playerBet = 0;
-    // console.log("Busted!");
+    lose(0);
+    refresh();
 }
 
 // Compares your card and the computer's card to see which card has a higher value
@@ -163,6 +159,8 @@ function compare() {
     let computerTotal = 0;
     let playerPoints = [];
     let computerPoints = [];
+
+    // Initialize variables that track whether the player has an ace and if an ace has had its value reduced to 1
     const lookForAce = playerPlay.find(item => item.Value === 'A');
     let aceAltered = false;
 
