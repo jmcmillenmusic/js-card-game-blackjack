@@ -10,6 +10,7 @@ function end() {
     for (let i = 0; i < actionButtons.length; i++) {
         actionButtons[i].disabled = true;
     }
+    document.getElementById('playerTotal').textContent = `Player Total: ??`;
 }
 
 function clear() {
