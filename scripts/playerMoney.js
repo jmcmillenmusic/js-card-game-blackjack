@@ -52,6 +52,7 @@ function refresh() {
     }
 }
 
+// Allows other functions to change playerBet
 function lose(money) {
     playerBet = money;
 }
