@@ -57,4 +57,5 @@ function lose(money) {
     playerBet = money;
 }
 
+// Export variables and functions
 export { playerMoney, playerBet, increaseBet, decreaseBet, maximumBet, refresh, lose };

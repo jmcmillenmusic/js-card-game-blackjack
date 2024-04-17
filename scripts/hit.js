@@ -34,7 +34,6 @@ function update() {
             break;
     }
     // Adds all of the points from the player's cards to playerTotal
-    // playerTotal = playerPoints.reduce((a, b) => a + b, 0);
     increasePlayerTotal(playerPlay[playerPlay.length - 1].Points);
 
     console.log(playerPoints);

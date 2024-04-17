@@ -160,16 +160,6 @@ function bust() {
 
 // Compares your card and the computer's card to see which card has a higher value
 function compare() {
-    // Initialize variables that track card values as points
-    // let playerTotal = 0;
-    // let computerTotal = 0;
-    // let playerPoints = [];
-    // let computerPoints = [];
-
-    // // Initialize variables that track whether the player has an ace and if an ace has had its value reduced to 1
-    // const lookForAce = playerPlay.find(item => item.Value === 'A');
-    // let aceAltered = false;
-
     // Sets the value of the computer's face cards and aces to a number; otherwise, converts the cards' value from a string to a number
     for (let i = 0; i < computerPlay.length; i++) {
         switch (computerPlay[i].Value) {
@@ -226,44 +216,6 @@ function compare() {
     console.log(playerPoints);
     console.log(playerTotal);
 
-    // // Reduces an ace's value from 11 to 1 if it would cause the player to go over 21
-    // if (playerTotal > 21 && lookForAce != undefined) {
-    //     if (aceAltered = false) {
-    //         for (let i = 0; i < playerPlay.length; i++) {
-    //             if (playerPlay[i].Value === 'A') {
-    //                 playerPlay[i].Points = 1;
-    //                 playerPoints[i] = 1;
-    //                 playerTotal = playerPoints.reduce((a, b) => a + b, 0);
-    //                 aceAltered = true;
-    //                 console.log(playerPoints);
-    //                 console.log(playerTotal);
-    //             }
-    //         }
-    //         console.log(lookForAce);
-    //         console.log(aceAltered);
-    //     } else if (aceAltered = true) {
-    //         bust();
-    //         console.log("Busted!");
-    //     }
-        
-    // } else if (playerTotal > 21 && lookForAce === undefined) {
-    //     bust();
-    //     console.log("Busted!");
-    // }
-
-    // // Reduces an ace's value from 11 to 1 if it would cause the computer to go over 21
-    // if (computerTotal > 21) {
-    //     for (let i = 0; i < computerPlay.length; i++) {
-    //         if (computerPlay[i].Value === 'A') {
-    //             computerPlay[i].Points = 1;
-    //             playerPoints[i] = 1;
-    //             computerTotal = playerPoints.reduce((a, b) => a + b, 0);
-    //             console.log(playerPoints);
-    //             console.log(computerTotal);
-    //         }
-    //     }
-    // }
-
     // Shows the player the value of the cards in their hand
     document.getElementById('playerTotal').textContent = `Player Total: ${playerTotal}`;
 }
@@ -315,9 +267,15 @@ function checkForBust() {
     document.getElementById('playerTotal').textContent = `Player Total: ${playerTotal}`;
 }
 
+// Clears the contents of the playerPoints array
+function clearPlayerPoints() {
+    playerPoints = [];
+}
+
+// Allows other scripts to change playerTotal
 function increasePlayerTotal(amount) {
     playerTotal = playerTotal + amount;
 }
 
 // Exports all functions and variables to index.js and other scripts that need these
-export { playerPoints, playerTotal, computerPoints, computerTotal, createPlayerCard, createComputerCard, deal, start, compare, checkForBust, increasePlayerTotal };
+export { playerPoints, playerTotal, computerPoints, computerTotal, createPlayerCard, createComputerCard, deal, start, compare, checkForBust, increasePlayerTotal, clearPlayerPoints };
