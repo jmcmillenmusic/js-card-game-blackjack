@@ -42,7 +42,7 @@ document.getElementById('hit').addEventListener('click', checkForBust);
 
 // Adds event listeners to the #stand button
 document.getElementById('stand').addEventListener('click', stand);
-document.getElementById('stand').addEventListener('click', compare);
+// document.getElementById('stand').addEventListener('click', compare);
 
 // Adds event listeners to the #clear button
 document.getElementById('clear').addEventListener('click', clear);

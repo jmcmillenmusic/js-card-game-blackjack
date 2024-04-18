@@ -277,5 +277,10 @@ function increasePlayerTotal(amount) {
     playerTotal = playerTotal + amount;
 }
 
+// Allows other scripts to change computerTotal
+function increasecomputerTotal(amount) {
+    computerTotal = computerTotal + amount;
+}
+
 // Exports all functions and variables to index.js and other scripts that need these
-export { playerPoints, playerTotal, computerPoints, computerTotal, createPlayerCard, createComputerCard, deal, start, compare, checkForBust, increasePlayerTotal, clearPlayerPoints };
+export { playerPoints, playerTotal, computerPoints, computerTotal, createPlayerCard, createComputerCard, deal, start, compare, checkForBust, increasePlayerTotal, increasecomputerTotal, clearPlayerPoints };
