@@ -1,5 +1,5 @@
 import { discardPile, playerPlay, computerPlay } from './base.js';
-import { clearPlayerPoints } from './deal.js';
+import { clearPoints } from './deal.js';
 
 // Re-enables buttons that change the player's bet to start the next hand of Blackjack
 function end() {
@@ -11,9 +11,10 @@ function end() {
     for (let i = 0; i < actionButtons.length; i++) {
         actionButtons[i].disabled = true;
     }
-    // Resets playerTotal to 0 by clearing the playerPoints array
-    clearPlayerPoints();
+    // Resets playerTotal and computerTotal to 0 by clearing their respective arrays
+    clearPoints();
     document.getElementById('playerTotal').textContent = `Player Total: ??`;
+    document.getElementById('dealerTotal').textContent = `Dealer Total: ??`;
 }
 
 function clear() {
