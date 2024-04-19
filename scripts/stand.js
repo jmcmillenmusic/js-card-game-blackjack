@@ -13,6 +13,7 @@ function stand() {
     // Shows the dealer the value of the cards in their hand
     document.getElementById('dealerTotal').textContent = `Dealer Total: ${computerTotal}`;
     
+    // Adds a card to the dealer's hand if computerTotal is 16 or less
     function computerHit() {
         if (computerTotal <= 16) {
             computerPlay.push(deck[0]);
@@ -52,6 +53,8 @@ function stand() {
             console.log(computerTotal);
         }
     }
+
+    // Stops adding cards to the dealer's hand if computerTotal is 17 or more
     function computerStand() {
         if (computerTotal >= 17 && computerTotal <= 21) {
             console.log(computerPlay);
@@ -62,6 +65,7 @@ function stand() {
         }
     }
 
+    // Every second, check computerTotal's value; hit on 16 or less, stand on 17 or more
     const dealerHand = setInterval(() => {
         if (computerTotal >= 17) {
             computerStand();
@@ -69,13 +73,6 @@ function stand() {
         };
         computerHit();
     }, 1000);
-
-    // if (computerTotal <= 16) {
-    //     setTimeout(computerHit, 1000);
-    // } else {
-    //     clearTimeout(computerHit);
-    //     computerStand();
-    // }
 }
 
 // Export stand() to index.js

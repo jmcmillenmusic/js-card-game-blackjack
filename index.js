@@ -1,7 +1,7 @@
 // Imports variables and functions from their respective scripts
 import { deck, shuffle } from "./scripts/shuffle.js";
 import { playerMoney, playerBet, increaseBet, decreaseBet, maximumBet, refresh } from "./scripts/playerMoney.js";
-import { deal, start, compare, checkForBust } from "./scripts/deal.js";
+import { deal, start, compare, checkForBust, faceDown } from "./scripts/deal.js";
 import { hit, update } from "./scripts/hit.js";
 import { clear } from "./scripts/clear.js";
 import { stand } from "./scripts/stand.js";
@@ -32,6 +32,7 @@ document.getElementById('maximumBet').addEventListener('click', refresh);
 
 // Adds event listeners to the #deal button
 document.getElementById('deal').addEventListener('click', deal);
+document.getElementById('deal').addEventListener('click', faceDown);
 document.getElementById('deal').addEventListener('click', start);
 document.getElementById('deal').addEventListener('click', compare);
 
@@ -42,7 +43,6 @@ document.getElementById('hit').addEventListener('click', checkForBust);
 
 // Adds event listeners to the #stand button
 document.getElementById('stand').addEventListener('click', stand);
-// document.getElementById('stand').addEventListener('click', compare);
 
 // Adds event listeners to the #clear button
 document.getElementById('clear').addEventListener('click', clear);

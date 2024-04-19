@@ -95,6 +95,14 @@ function createComputerCard() {
         }
     }
 
+    // // Ensures that the computer's first card is face-down instead of face-up
+    // const dealerFirstCardImg = document.getElementById('computerCards').getElementsByClassName('cardImg');
+    // dealerFirstCardImg[0].src = 'images/card_back.png';
+    // const dealerFirstCardText = document.getElementById('computerCards').getElementsByClassName('cardText');
+    // dealerFirstCardText[0].style.visibility = 'hidden';
+}
+
+function faceDown() {
     // Ensures that the computer's first card is face-down instead of face-up
     const dealerFirstCardImg = document.getElementById('computerCards').getElementsByClassName('cardImg');
     dealerFirstCardImg[0].src = 'images/card_back.png';
@@ -268,8 +276,9 @@ function checkForBust() {
 }
 
 // Clears the contents of the playerPoints array
-function clearPlayerPoints() {
+function clearPoints() {
     playerPoints = [];
+    computerPoints = [];
 }
 
 // Allows other scripts to change playerTotal
@@ -283,4 +292,4 @@ function increasecomputerTotal(amount) {
 }
 
 // Exports all functions and variables to index.js and other scripts that need these
-export { playerPoints, playerTotal, computerPoints, computerTotal, createPlayerCard, createComputerCard, deal, start, compare, checkForBust, increasePlayerTotal, increasecomputerTotal, clearPlayerPoints };
+export { playerPoints, playerTotal, computerPoints, computerTotal, createPlayerCard, createComputerCard, faceDown, deal, start, compare, checkForBust, increasePlayerTotal, increasecomputerTotal, clearPoints };
