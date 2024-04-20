@@ -1,7 +1,8 @@
 // Imports variables and functions from their respective scripts
 import { deck, shuffle } from "./scripts/shuffle.js";
 import { playerMoney, playerBet, increaseBet, decreaseBet, maximumBet, refresh } from "./scripts/playerMoney.js";
-import { deal, start, compare, checkForBust, faceDown } from "./scripts/deal.js";
+import { deal, start, faceDown } from "./scripts/deal.js";
+import { compare, checkForBust } from "./scripts/gameLogic.js";
 import { hit, update } from "./scripts/hit.js";
 import { clear } from "./scripts/clear.js";
 import { stand } from "./scripts/stand.js";
