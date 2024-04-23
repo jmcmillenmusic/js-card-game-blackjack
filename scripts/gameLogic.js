@@ -53,9 +53,11 @@ function compare() {
             case ('A'):
                 if (playerTotal <= 10) {
                     playerPlay[i].Points = 11;
+                    playerPlay[i].AceAltered = false;
                     playerPoints.push(playerPlay[i].Points);
                 } else {
                     playerPlay[i].Points = 1;
+                    playerPlay[i].AceAltered = true;
                     playerPoints.push(playerPlay[i].Points);
                 }
                 break;
@@ -67,6 +69,7 @@ function compare() {
         // Adds all of the points from the player's cards to playerTotal
         increasePlayerTotal(playerPlay[i].Points);
     }
+    console.log(playerPlay);
     console.log(playerPoints);
     console.log(playerTotal);
 
@@ -75,26 +78,32 @@ function compare() {
 }
 
 function checkForBust() {
+    // TODO: Fix this function to correctly alter an ace's value
     // Initialize variables that track whether the player has an ace and if an ace has had its value reduced to 1
     const lookForAce = playerPlay.find(item => item.Value === 'A');
-    let aceAltered = false;
+    console.log(lookForAce);
+    // let aceAltered = false;
     
     // Reduces an ace's value from 11 to 1 if it would cause the player to go over 21
     if (playerTotal > 21 && lookForAce != undefined) {
-        if (aceAltered = false) {
+        console.log("First conditions check");
+        if (lookForAce.AceAltered === false) {
+            console.log("Second conditions check");
             for (let i = 0; i < playerPlay.length; i++) {
                 if (playerPlay[i].Value === 'A') {
                     playerPlay[i].Points = 1;
+                    playerPlay[i].AceAltered = true;
                     playerPoints[i] = 1;
-                    playerTotal = playerPoints.reduce((a, b) => a + b, 0);
-                    aceAltered = true;
+                    increasePlayerTotal(-10);
+                    // playerTotal = playerPoints.reduce((a, b) => a + b, 0);
+                    // aceAltered = true;
                     console.log(playerPoints);
                     console.log(playerTotal);
                 }
             }
             console.log(lookForAce);
-            console.log(aceAltered);
-        } else if (aceAltered = true) {
+            // console.log(aceAltered);
+        } else if (lookForAce.AceAltered === true) {
             bust();
             console.log("Busted!");
         }
