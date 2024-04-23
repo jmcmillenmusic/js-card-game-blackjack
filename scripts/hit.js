@@ -7,7 +7,7 @@ function hit() {
     playerPlay.push(deck[0]);
     deck.shift(deck[0]);
     createPlayerCard();
-    console.log(playerPlay);
+    // console.log(playerPlay);
 }
 
 // Updates playerPoints and playerTotal when the player hits
@@ -22,9 +22,11 @@ function update() {
         case ('A'):
             if (playerTotal <= 10) {
                 playerPlay[playerPlay.length - 1].Points = 11;
+                playerPlay[playerPlay.length - 1].AceAltered = false;
                 playerPoints.push(playerPlay[playerPlay.length - 1].Points);
             } else {
                 playerPlay[playerPlay.length - 1].Points = 1;
+                playerPlay[playerPlay.length - 1].AceAltered = true;
                 playerPoints.push(playerPlay[playerPlay.length - 1].Points);
             }
             break;
@@ -35,7 +37,7 @@ function update() {
     }
     // Adds all of the points from the player's cards to playerTotal
     increasePlayerTotal(playerPlay[playerPlay.length - 1].Points);
-
+    console.log(playerPlay);
     console.log(playerPoints);
     console.log(playerTotal);
 }
