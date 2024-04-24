@@ -1,6 +1,6 @@
 import { playerPlay, computerPlay } from "./base.js";
 import { playerPoints, playerTotal, computerPoints, computerTotal, increasecomputerTotal, increasePlayerTotal } from "./deal.js"
-import { lose, refresh } from "./playerMoney.js";
+import { playerBet, changeBet, refresh } from "./playerMoney.js";
 
 // Disables actions buttons except Clear when the player goes over 21
 function bust() {
@@ -8,7 +8,7 @@ function bust() {
     for (let i = 0; i < actionButtons.length - 1; i++) {
         actionButtons[i].disabled = true;
     }
-    lose(0);
+    changeBet(-playerBet);
     refresh();
 }
 
@@ -78,11 +78,9 @@ function compare() {
 }
 
 function checkForBust() {
-    // TODO: Fix this function to correctly alter an ace's value
     // Initialize variables that track whether the player has an ace and if an ace has had its value reduced to 1
     const lookForAce = playerPlay.find(item => item.Value === 'A');
     console.log(lookForAce);
-    // let aceAltered = false;
     
     // Reduces an ace's value from 11 to 1 if it would cause the player to go over 21
     if (playerTotal > 21 && lookForAce != undefined) {
@@ -95,14 +93,11 @@ function checkForBust() {
                     playerPlay[i].AceAltered = true;
                     playerPoints[i] = 1;
                     increasePlayerTotal(-10);
-                    // playerTotal = playerPoints.reduce((a, b) => a + b, 0);
-                    // aceAltered = true;
                     console.log(playerPoints);
                     console.log(playerTotal);
                 }
             }
             console.log(lookForAce);
-            // console.log(aceAltered);
         } else if (lookForAce.AceAltered === true) {
             bust();
             console.log("Busted!");
@@ -131,4 +126,4 @@ function checkForBust() {
 }
 
 // Exports all functions to index.js and other scripts that need these
-export { compare, checkForBust };
+export { bust, compare, checkForBust };

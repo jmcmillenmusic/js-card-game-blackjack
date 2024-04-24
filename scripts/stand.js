@@ -1,6 +1,8 @@
 // Imports the variables below from base.js and deal.js
 import { deck, computerPlay } from './base.js'
-import { createComputerCard, computerPoints, computerTotal, increasecomputerTotal } from "./deal.js";
+import { createComputerCard, computerPoints, computerTotal, increasecomputerTotal, playerTotal } from "./deal.js";
+import { playerMoney, playerBet, changeBet, changeMoney } from "./playerMoney.js";
+import { bust } from './gameLogic.js';
 
 // While the computer's total is 16 or less, hit; otherwise, stand
 function stand() {
@@ -59,9 +61,35 @@ function stand() {
         if (computerTotal >= 17 && computerTotal <= 21) {
             console.log(computerPlay);
             console.log(`Dealer Stands on ${computerTotal}`);
+            if (computerTotal > playerTotal) {
+                console.log("Dealer Wins!");
+                bust();
+            } else if (playerTotal > computerTotal) {
+                console.log("Player Wins!");
+                changeBet(playerBet);
+                changeMoney(playerBet);
+                changeBet(-playerBet);
+                // Refreshes the front end with the amount the player has won
+                document.getElementById("playerMoney").textContent = `Cash: ${playerMoney}`;
+                document.getElementById("playerBet").textContent = `Bet: ${playerBet}`;
+            } else if (computerTotal === playerTotal) {
+                console.log("PUSH!");
+                changeMoney(playerBet);
+                changeBet(-playerBet);
+                // Refreshes the front end with the amount the player has won
+                document.getElementById("playerMoney").textContent = `Cash: ${playerMoney}`;
+                document.getElementById("playerBet").textContent = `Bet: ${playerBet}`;
+            }
         } else {
             console.log(computerPlay);
             console.log(`Dealer BUSTS on ${computerTotal}`);
+            console.log("Player Wins!");
+            changeBet(playerBet);
+            changeMoney(playerBet);
+            changeBet(-playerBet);
+            // Refreshes the front end with the amount the player has won
+            document.getElementById("playerMoney").textContent = `Cash: ${playerMoney}`;
+            document.getElementById("playerBet").textContent = `Bet: ${playerBet}`;
         }
     }
 

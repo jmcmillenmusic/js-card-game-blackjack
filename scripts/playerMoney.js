@@ -53,9 +53,13 @@ function refresh() {
 }
 
 // Allows other functions to change playerBet
-function lose(money) {
-    playerBet = money;
+function changeBet(money) {
+    playerBet = playerBet + money;
+}
+
+function changeMoney(amount) {
+    playerMoney = playerMoney + amount;
 }
 
 // Export variables and functions
-export { playerMoney, playerBet, increaseBet, decreaseBet, maximumBet, refresh, lose };
+export { playerMoney, playerBet, increaseBet, decreaseBet, maximumBet, refresh, changeBet, changeMoney };
