@@ -42,5 +42,5 @@ function update() {
     console.log(playerTotal);
 }
 
-// Exports hit() to index.js
+// Exports hit and update to index.js
 export { hit, update };
