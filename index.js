@@ -6,6 +6,7 @@ import { compare, checkForBust } from "./scripts/gameLogic.js";
 import { hit, update } from "./scripts/hit.js";
 import { clear } from "./scripts/clear.js";
 import { stand } from "./scripts/stand.js";
+import { doubleDown } from "./scripts/doubleDown.js";
 
 // Shuffles the deck automatically when the window loads 
 window.onload = shuffle();
@@ -47,3 +48,6 @@ document.getElementById('stand').addEventListener('click', stand);
 
 // Adds event listeners to the #clear button
 document.getElementById('clear').addEventListener('click', clear);
+
+// Adds event listeners to the #doubleDown button
+document.getElementById('doubleDown').addEventListener('click', doubleDown);
