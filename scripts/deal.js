@@ -140,13 +140,15 @@ function deal() {
 // Disables buttons that change the player's bet and enables buttons that allow the player to play Blackjack
 function start() {
     const bettingButtons = document.getElementById('betting').getElementsByClassName('betButton');
-    const actionButtons = document.getElementById('actions').getElementsByClassName('actionButton');
+    // const actionButtons = document.getElementById('actions').getElementsByClassName('actionButton');
     for (let i = 0; i < bettingButtons.length; i++) {
         bettingButtons[i].disabled = true;
     }
-    for (let i = 0; i < actionButtons.length; i++) {
-        actionButtons[i].disabled = false;
-    }
+    // for (let i = 0; i < actionButtons.length; i++) {
+    //     actionButtons[i].disabled = false;
+    // }
+    document.getElementById('hit').disabled = false;
+    document.getElementById('stand').disabled = false;
 }
 
 // Resets the values of the below variables

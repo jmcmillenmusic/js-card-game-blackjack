@@ -75,6 +75,16 @@ function compare() {
 
     // Shows the player the value of the cards in their hand
     document.getElementById('playerTotal').textContent = `Player Total: ${playerTotal}`;
+
+    // Allow the player to split if the first 2 cards have the same value
+    if (playerPlay[0].Value === playerPlay[1].Value) {
+        document.getElementById('split').disabled = false;
+    }
+
+    // Allow the player to double down if their first 2 cards have a combined total of 10 or 11
+    if (playerTotal === 10 || playerTotal === 11) {
+        document.getElementById('doubleDown').disabled = false;
+    }
 }
 
 function checkForBust() {
