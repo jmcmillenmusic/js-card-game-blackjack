@@ -6,6 +6,12 @@ import { bust } from './gameLogic.js';
 
 // While the computer's total is 16 or less, hit; otherwise, stand
 function stand() {
+    // Disables all action buttons until the hand is resolved
+    const actionButtons = document.getElementById('actions').getElementsByClassName('actionButton');
+    for (let i = 0; i < actionButtons.length; i++) {
+        actionButtons[i].disabled = true;
+    }
+    
     // Flips over the computer's first card
     const dealerFirstCardImg = document.getElementById('computerCards').getElementsByClassName('cardImg');
     dealerFirstCardImg[0].src = 'images/blank_card.png';
@@ -98,6 +104,8 @@ function stand() {
         if (computerTotal >= 17) {
             computerStand();
             clearInterval(dealerHand);
+            // Enable the clear button to run the clear() function
+            document.getElementById('clear').disabled = false;
         };
         computerHit();
     }, 1000);
