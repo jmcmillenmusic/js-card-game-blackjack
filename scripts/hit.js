@@ -7,7 +7,9 @@ function hit() {
     playerPlay.push(deck[0]);
     deck.shift(deck[0]);
     createPlayerCard();
-    // console.log(playerPlay);
+    // Disables the Double Down and Split buttons when the player has 3+ cards
+    document.getElementById('doubleDown').disabled = true;
+    document.getElementById('split').disabled = true;
 }
 
 // Updates playerPoints and playerTotal when the player hits

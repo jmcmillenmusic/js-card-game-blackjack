@@ -2,12 +2,14 @@ import { playerPlay, computerPlay } from "./base.js";
 import { playerPoints, playerTotal, computerPoints, computerTotal, increasecomputerTotal, increasePlayerTotal } from "./deal.js"
 import { playerBet, changeBet, refresh } from "./playerMoney.js";
 
-// Disables actions buttons except Clear when the player goes over 21
+// Enables the Clear button, sets playerBet to 0, and updates the player's money
 function bust() {
+    // Disables actions buttons except Clear when the player goes over 21
     const actionButtons = document.getElementById('actions').getElementsByClassName('actionButton');
-    for (let i = 0; i < actionButtons.length - 1; i++) {
+    for (let i = 0; i < actionButtons.length; i++) {
         actionButtons[i].disabled = true;
     }
+    document.getElementById('clear').disabled = false;
     changeBet(-playerBet);
     refresh();
 }
